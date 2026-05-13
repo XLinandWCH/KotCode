@@ -1,0 +1,10 @@
+[versions]
+koog = "0.8.0"
+slf4j = "2.0.9"
+kotlin = "2.3.10"
+[libraries]
+koog-agents = {module = "ai.koog:koog-agents",version.ref = "koog"}
+slf4j-nop = { module = "org.slf4j:slf4j-nop", version.ref = "slf4j" }
+
+[plugins]
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
