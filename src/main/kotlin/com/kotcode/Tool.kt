@@ -6,6 +6,10 @@ import ai.koog.agents.ext.tool.SayToUser
 import ai.koog.agents.ext.tool.file.ListDirectoryTool
 import ai.koog.agents.ext.tool.file.ReadFileTool
 import ai.koog.agents.ext.tool.file.WriteFileTool
+import ai.koog.agents.ext.tool.shell.ExecuteShellCommandTool
+import ai.koog.agents.ext.tool.shell.JvmShellCommandExecutor
+import ai.koog.agents.ext.tool.shell.PrintShellCommandConfirmationHandler
+import ai.koog.agents.ext.tool.shell.ShellCommandConfirmation
 import ai.koog.rag.base.files.JVMFileSystemProvider
 
 
@@ -15,4 +19,14 @@ val toolRegistry = ToolRegistry{
     tool(ReadFileTool(JVMFileSystemProvider.ReadOnly))
     tool(ListDirectoryTool(JVMFileSystemProvider.ReadOnly))
     tool(WriteFileTool(JVMFileSystemProvider.ReadWrite))
+    tool(ExecuteShellCommandTool())
+}
+
+// 创建shell工具实例
+fun ExecuteShellCommandTool(): ExecuteShellCommandTool {
+    return if (System.getenv("BRAVE_MODE")?.lowercase() == "true") {
+        ExecuteShellCommandTool(JvmShellCommandExecutor()) { _ -> ShellCommandConfirmation.Approved }
+    } else {
+        ExecuteShellCommandTool(JvmShellCommandExecutor(), PrintShellCommandConfirmationHandler())
+    }
 }

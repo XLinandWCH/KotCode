@@ -8,7 +8,6 @@ import ai.koog.agents.core.dsl.extension.nodeLLMSendToolResult
 import ai.koog.agents.core.dsl.extension.onAssistantMessage
 import ai.koog.agents.core.dsl.extension.onToolCall
 import ai.koog.agents.core.environment.ReceivedToolResult
-import ai.koog.prompt.dsl.prompt
 
 val agentStrategy = strategy<String, String>("是否调用工具策略图") {
     val nodeSendInput by nodeLLMRequest()

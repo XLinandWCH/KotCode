@@ -20,7 +20,7 @@ suspend fun  KotCode(){
         temperature = 0.5,
         systemPrompt = """
             你是一名编程助手，目标是帮助我们解决编码任务。  
-            你可以使用文件系统工具来读取、列出和编辑文件。  
+            你可以使用文件系统工具来读取、列出、编辑文件和PowerShell。  
             如果需要使用工具，Koog会处理格式问题，直接调用函数即可。
         """.trimIndent(),
         strategy = agentStrategy,
