@@ -1,10 +1,16 @@
 [versions]
 koog = "0.8.0"
 slf4j = "2.0.9"
-kotlin = "2.3.10"
+kotlin = "2.2.21"
+mordant = "3.0.2"
+jline = "3.26.0"
+jansi = "2.4.1"
+
 [libraries]
 koog-agents = {module = "ai.koog:koog-agents",version.ref = "koog"}
 slf4j-nop = { module = "org.slf4j:slf4j-nop", version.ref = "slf4j" }
-
+mordant-core = { module = "com.github.ajalt.mordant:mordant-jvm", version.ref = "mordant" }
+jline-core = { module = "org.jline:jline", version.ref = "jline" }
+jansi-core = { module = "org.fusesource.jansi:jansi", version.ref = "jansi" }
 [plugins]
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

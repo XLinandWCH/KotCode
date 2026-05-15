@@ -4,6 +4,7 @@ import ai.koog.agents.core.dsl.builder.strategy
 import ai.koog.agents.core.dsl.extension.nodeExecuteTool
 import ai.koog.agents.core.dsl.extension.nodeLLMCompressHistory
 import ai.koog.agents.core.dsl.extension.nodeLLMRequest
+import ai.koog.agents.core.dsl.extension.nodeLLMRequestStreaming
 import ai.koog.agents.core.dsl.extension.nodeLLMSendToolResult
 import ai.koog.agents.core.dsl.extension.onAssistantMessage
 import ai.koog.agents.core.dsl.extension.onToolCall
@@ -14,6 +15,7 @@ val agentStrategy = strategy<String, String>("是否调用工具策略图") {
     val nodeExecuteTool by nodeExecuteTool()
     val nodeSendToolResult by nodeLLMSendToolResult()
     val compressHistory by nodeLLMCompressHistory<ReceivedToolResult>()
+    val llmNode by nodeLLMRequestStreaming("streaming-llm-node") //
 
     edge(nodeStart forwardTo nodeSendInput)
 
